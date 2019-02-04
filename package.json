@@ -1,0 +1,44 @@
+{
+  "name": "typescript-learning",
+  "version": "1.0.0",
+  "description": "This is where I try to learn typescript",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack-dev-server",
+    "backend": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/callmekungfu/typescript-learning.git"
+  },
+  "author": "Yong Lin Wang",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/callmekungfu/typescript-learning/issues"
+  },
+  "homepage": "https://github.com/callmekungfu/typescript-learning#readme",
+  "dependencies": {
+    "@types/react": "^16.7.21",
+    "@types/react-dom": "^16.0.11",
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.1.1",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "tslint": "^5.12.1"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "css-loader": "^2.1.0",
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.15.0",
+    "eslint-plugin-jsx-a11y": "^6.2.0",
+    "eslint-plugin-react": "^7.12.4",
+    "source-map-loader": "^0.2.4",
+    "typescript": "^3.2.4",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
+  }
+}
