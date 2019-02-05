@@ -7,26 +7,28 @@ declare global {
   }
 }
 
-window.YT = window.YT || {};
-
-export interface PlayerProps {
+export type PlayerProps = {
   video: string;
+  speed: number;
+  mirror: boolean;
 }
 
-interface PlayerState {
+type PlayerState = {
   vidId: string;
-  mirrored: boolean;
-  speed: string;
+  mirror: boolean;
+  speed: number;
   start: number;
   end: number;
-  youtube: object;
+  youtube: any;
+  mirrorText: string;
 }
 
 export class YouTubePlayer extends React.Component<PlayerProps, PlayerState> {
   state: PlayerState = {
     vidId: '',
-    mirrored: false,
-    speed: '1',
+    mirror: false,
+    mirrorText: '',
+    speed: 1,
     start: 0,
     end: 0,
     youtube: null,
@@ -53,6 +55,17 @@ export class YouTubePlayer extends React.Component<PlayerProps, PlayerState> {
     }
   }
 
+  componentWillReceiveProps(nextProps: PlayerProps) {
+    if (nextProps.speed !== this.state.speed) {
+      this.setState({ speed: nextProps.speed });
+      this.setPlayBackRate(nextProps.speed);
+    }
+    if (nextProps.mirror !== this.state.mirror) {
+      this.setState({ mirror: nextProps.mirror});
+      this.setMirror(nextProps.mirror);
+    }
+  }
+
   initPlayer() {
     let tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
@@ -60,11 +73,27 @@ export class YouTubePlayer extends React.Component<PlayerProps, PlayerState> {
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
   }
 
+  setPlayBackRate(rate: number) {
+    this.state.youtube.setPlaybackRate(rate);
+  }
+
+  setMirror(mirror: boolean) {
+    if(mirror) {
+      this.setState({
+        mirrorText: 'mirrored'
+      })
+    } else {
+      this.setState({
+        mirrorText: ''
+      })
+    }
+  }
+
   render() {
     return (
-    <div>
-      <div className="video-player" id="player"></div>
-    </div>
+      <div className={this.state.mirror ? 'mirrored' : null}>
+        <div className={`video-player ${this.state.mirrorText}`} id="player"></div>
+      </div>
     );
   }
 }
