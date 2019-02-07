@@ -1,11 +1,5 @@
 import * as React from "react";
-
-declare global {
-  interface Window { 
-    YT: any;
-    onYouTubeIframeAPIReady: any;
-  }
-}
+import YouTube from 'react-youtube';
 
 export type PlayerProps = {
   video: string;
@@ -19,9 +13,10 @@ type PlayerState = {
   speed: number;
   start: number;
   end: number;
-  youtube: any;
   mirrorText: string;
 }
+
+let youtube: any = null;
 
 export class YouTubePlayer extends React.Component<PlayerProps, PlayerState> {
   state: PlayerState = {
@@ -31,28 +26,11 @@ export class YouTubePlayer extends React.Component<PlayerProps, PlayerState> {
     speed: 1,
     start: 0,
     end: 0,
-    youtube: null,
   }
 
   constructor (props: PlayerProps) {
     super(props);
-    this.initPlayer();
-  }
-
-  componentDidMount() {
-    this.setState({
-      vidId: this.props.video
-    });
-    window['onYouTubeIframeAPIReady'] = () => {
-      const player = new window['YT'].Player('player', {
-        videoId: this.state.vidId,
-        height: '360',
-        width: '640',
-      });
-      this.setState({
-        youtube: player
-      });
-    }
+    this.initPlayer = this.initPlayer.bind(this);
   }
 
   componentWillReceiveProps(nextProps: PlayerProps) {
@@ -64,17 +42,19 @@ export class YouTubePlayer extends React.Component<PlayerProps, PlayerState> {
       this.setState({ mirror: nextProps.mirror});
       this.setMirror(nextProps.mirror);
     }
+
+    if (nextProps.video !== this.state.vidId) {
+      this.setState({vidId: nextProps.video});
+    }
   }
 
-  initPlayer() {
-    let tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    let firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  initPlayer(e: any) {
+    youtube = e.target;
+    console.log(youtube);
   }
 
   setPlayBackRate(rate: number) {
-    this.state.youtube.setPlaybackRate(rate);
+    youtube.setPlaybackRate(rate);
   }
 
   setMirror(mirror: boolean) {
@@ -92,7 +72,7 @@ export class YouTubePlayer extends React.Component<PlayerProps, PlayerState> {
   render() {
     return (
       <div className={this.state.mirror ? 'mirrored' : null}>
-        <div className={`video-player ${this.state.mirrorText}`} id="player"></div>
+        <YouTube className="video-player" videoId={this.state.vidId} onReady={this.initPlayer} />
       </div>
     );
   }

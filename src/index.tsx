@@ -9,18 +9,21 @@ import { Controls } from "./components/PlayerControls";
 type state = {
   speed: number;
   mirror: boolean;
+  target: string;
 }
 
 class Root extends React.Component {
   state: state = {
     speed: 1,
-    mirror: false
+    mirror: false,
+    target: ''
   }
 
   constructor(props: any) {
     super(props);
     this.handleSpeedChange = this.handleSpeedChange.bind(this);
     this.handleMirrorChange = this.handleMirrorChange.bind(this);
+    this.handleTargetChange = this.handleTargetChange.bind(this);
   }
 
   handleSpeedChange(speed: number) {
@@ -35,11 +38,17 @@ class Root extends React.Component {
     });
   }
 
+  handleTargetChange(target: string) {
+    this.setState({
+      target
+    })
+  }
+
   render() {
     return (
       <div>
-        <YouTubePlayer video="OiTCDijrze8" speed={this.state.speed} mirror={this.state.mirror}/>
-        <Controls handleSpeedChange={this.handleSpeedChange} handleMirrorChange={this.handleMirrorChange} />
+        <YouTubePlayer video={this.state.target} speed={this.state.speed} mirror={this.state.mirror}/>
+        <Controls handleSpeedChange={this.handleSpeedChange} handleMirrorChange={this.handleMirrorChange} handleTargetChange={this.handleTargetChange}/>
       </div>
     )
   }
