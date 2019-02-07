@@ -50,7 +50,7 @@ export class YouTubePlayer extends React.Component<PlayerProps, PlayerState> {
 
   initPlayer(e: any) {
     youtube = e.target;
-    console.log(youtube);
+    console.log(youtube.getAvailablePlaybackRates());
   }
 
   setPlayBackRate(rate: number) {
@@ -71,7 +71,7 @@ export class YouTubePlayer extends React.Component<PlayerProps, PlayerState> {
 
   render() {
     return (
-      <div className={this.state.mirror ? 'mirrored' : null}>
+      <div className={this.state.mirror ? 'player-container mirrored' : 'player-container'}>
         <YouTube className="video-player" videoId={this.state.vidId} onReady={this.initPlayer} />
       </div>
     );

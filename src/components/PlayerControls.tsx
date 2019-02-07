@@ -36,8 +36,10 @@ export class Controls extends React.Component<ControlProps, ControlState> {
   render() {
     return (
     <div className="controls-container">
-      <SpeedControl speedChange={this.handleSpeedChange}/>
-      <MirrorControl handleMirrorChange={this.handleMirrorChange}/>
+      <div>
+        <SpeedControl speedChange={this.handleSpeedChange}/>
+        <MirrorControl handleMirrorChange={this.handleMirrorChange}/>
+      </div>
       <TargetControl handleTargetChange={this.handleTargetChange}/>
     </div>
     )

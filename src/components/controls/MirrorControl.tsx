@@ -28,7 +28,7 @@ export class MirrorControl extends React.Component<SpeedControlProps, SpeedContr
 
   render() {
     return (
-      <button onClick={this.handleClick}>{(this.state.mirrored) ? 'Go Back to Normal' : 'Mirror Video'}</button>
+      <button className="mirror-btn" onClick={this.handleClick}>{(this.state.mirrored) ? 'Go Back to Normal' : 'Mirror Video'}</button>
     )
   }
 }
