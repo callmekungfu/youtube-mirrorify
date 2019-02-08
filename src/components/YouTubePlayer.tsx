@@ -1,5 +1,7 @@
 import * as React from "react";
 import YouTube from 'react-youtube';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 export type PlayerProps = {
   video: string;
@@ -45,12 +47,12 @@ export class YouTubePlayer extends React.Component<PlayerProps, PlayerState> {
 
     if (nextProps.video !== this.state.vidId) {
       this.setState({vidId: nextProps.video});
+      youtube.playVideo();
     }
   }
 
   initPlayer(e: any) {
     youtube = e.target;
-    console.log(youtube.getAvailablePlaybackRates());
   }
 
   setPlayBackRate(rate: number) {
@@ -71,8 +73,16 @@ export class YouTubePlayer extends React.Component<PlayerProps, PlayerState> {
 
   render() {
     return (
-      <div className={this.state.mirror ? 'player-container mirrored' : 'player-container'}>
-        <YouTube className="video-player" videoId={this.state.vidId} onReady={this.initPlayer} />
+      <div>
+        <div className="general-prompt" hidden={this.state.vidId !== ''}>
+          <h1>YouTube Mirrorify</h1>
+          <h2>Play Video by pasting the link in the box below</h2>
+          <p>Built with <div className="beating-heart">❤</div> by <a href="https://yonglinwang.ca">Yong Lin Wang</a>, for Ivy Ma.</p>
+          <button className="btn btn-primary"><FontAwesomeIcon icon={faGithub} /> GitHub Repo</button>
+        </div>
+        <div className={(this.state.mirror ? 'player-container mirrored' : 'player-container')} hidden={this.state.vidId === ''}>
+          <YouTube className="video-player" videoId={this.state.vidId} onReady={this.initPlayer} opts={{playerVars: {fs: 0, modestBranding: 1, autoplay: 1}}} />
+        </div>
       </div>
     );
   }

@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 export type TargetControlProps = {
   handleTargetChange: (target: string) => void;
@@ -6,11 +8,13 @@ export type TargetControlProps = {
 
 type TargetControlState = {
   target: string;
+  bad_input: boolean;
 }
 
 export class TargetControl extends React.Component<TargetControlProps, TargetControlState> {
   state: TargetControlState = {
-    target: ''
+    target: '',
+    bad_input: false
   }
 
   constructor (props: TargetControlProps) {
@@ -21,20 +25,28 @@ export class TargetControl extends React.Component<TargetControlProps, TargetCon
 
   handleChange(e: any) {
     this.setState({
-      target: e.target.value
+      target: e.target.value,
+      bad_input: false
     });
   }
 
   handleClick() {
-    const id = this.youtubeParser(this.state.target);
-    this.props.handleTargetChange(id);
+    try {
+      const id = this.youtubeParser(this.state.target);
+      this.props.handleTargetChange(id);
+    } catch (e) {
+      this.setState({
+        bad_input: true
+      })
+    }
   }
 
   render() {
     return (
-      <div>
+      <div className={this.state.bad_input ? 'error' : null}>
+        <p className="error-prompt" hidden={!this.state.bad_input}>This is not a valid YouTube link.</p>
         <input type="text" placeholder="Paste YouTube Link Here" onChange={this.handleChange}/>
-        <button onClick={this.handleClick}>Find Video</button>
+        <button className="btn search-btn" onClick={this.handleClick}><FontAwesomeIcon icon={faArrowRight} /></button>
       </div>
     )
   }
@@ -43,6 +55,11 @@ export class TargetControl extends React.Component<TargetControlProps, TargetCon
   youtubeParser(url: string){
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = url.match(regExp);
-    return (match&&match[7].length==11)? match[7] : '';
+
+    if (match&&match[7].length==11) {
+      return match[7];
+    } else {
+      throw new Error('Not a YouTube Link or ID.')
+    }
   }
 }

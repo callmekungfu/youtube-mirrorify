@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
 
 export type SpeedControlProps = {
   handleMirrorChange: (speed: boolean) => void;
@@ -28,7 +30,7 @@ export class MirrorControl extends React.Component<SpeedControlProps, SpeedContr
 
   render() {
     return (
-      <button className="mirror-btn" onClick={this.handleClick}>{(this.state.mirrored) ? 'Go Back to Normal' : 'Mirror Video'}</button>
+      <button className="btn mirror-btn" onClick={this.handleClick}><FontAwesomeIcon icon={faExchangeAlt} /> {(this.state.mirrored) ? 'Normal Video' : 'Mirror Video'}</button>
     )
   }
 }

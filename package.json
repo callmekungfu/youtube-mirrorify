@@ -19,7 +19,12 @@
   },
   "homepage": "https://github.com/callmekungfu/typescript-learning#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.14",
+    "@fortawesome/free-brands-svg-icons": "^5.7.1",
+    "@fortawesome/free-solid-svg-icons": "^5.7.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "@types/react": "^16.7.21",
+    "@types/react-addons-css-transition-group": "^15.0.5",
     "@types/react-dom": "^16.0.11",
     "@types/react-youtube": "^7.6.0",
     "classnames": "^2.2.6",
@@ -27,7 +32,9 @@
     "express-graphql": "^0.7.1",
     "graphql": "^14.1.1",
     "react": "^16.7.0",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.7.0",
+    "react-router-dom": "^4.3.1",
     "react-youtube": "^7.9.0",
     "tslint": "^5.12.1"
   },

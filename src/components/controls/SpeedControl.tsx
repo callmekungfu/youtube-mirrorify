@@ -34,6 +34,9 @@ export class SpeedControl extends React.Component<SpeedControlProps, SpeedContro
         <option value="1.5">1.5</option>
         <option value="1.25">1.25</option>
         <option value="1">Normal</option>
+        <option value="0.75">0.75</option>
+        <option value="0.5">0.5</option>
+        <option value="0.25">0.25</option>
       </select>
     )
   }
