@@ -7,14 +7,19 @@ module.exports = {
     publicPath: 'dist',
   },
 
-  mode: 'development',
-
   // Enable sourcemaps for debugging webpack's output.
   devtool: 'source-map',
 
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
     extensions: ['.ts', '.tsx', '.js', '.json'],
+  },
+
+  devServer: {
+    port: 3000,
+    historyApiFallback: {
+      index: 'index.html',
+    },
   },
 
   module: {

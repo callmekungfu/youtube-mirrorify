@@ -7,6 +7,8 @@ export type PlayerProps = {
   video: string;
   speed: number;
   mirror: boolean;
+  fromWatch: boolean;
+  onReady: () => void;
 }
 
 type PlayerState = {
@@ -53,6 +55,7 @@ export class YouTubePlayer extends React.Component<PlayerProps, PlayerState> {
 
   initPlayer(e: any) {
     youtube = e.target;
+    this.props.onReady();
   }
 
   setPlayBackRate(rate: number) {
@@ -75,10 +78,17 @@ export class YouTubePlayer extends React.Component<PlayerProps, PlayerState> {
     return (
       <div>
         <div className="general-prompt" hidden={this.state.vidId !== ''}>
-          <h1>YouTube Mirrorify</h1>
-          <h2>Play Video by pasting the link in the box below</h2>
-          <p>Built with <div className="beating-heart">❤</div> by <a href="https://yonglinwang.ca">Yong Lin Wang</a>, for Ivy Ma.</p>
-          <button className="btn btn-primary"><FontAwesomeIcon icon={faGithub} /> GitHub Repo</button>
+          {!this.props.fromWatch ?
+            <div>
+              <h1>YouTube Mirrorify</h1>
+              <h2>Play Video by pasting the link in the box below</h2>
+              <div className="mb-30">Built with <div className="beating-heart">❤</div> by <a href="https://yonglinwang.ca">Yong Lin Wang</a>, for Ivy Ma.</div>
+              <button className="btn btn-primary"><FontAwesomeIcon icon={faGithub} /> GitHub Repo</button>
+            </div> : 
+            <div>
+              <p>Loading Your Video Now...</p>
+            </div>
+          }
         </div>
         <div className={(this.state.mirror ? 'player-container mirrored' : 'player-container')} hidden={this.state.vidId === ''}>
           <YouTube className="video-player" videoId={this.state.vidId} onReady={this.initPlayer} opts={{playerVars: {fs: 0, modestBranding: 1, autoplay: 1}}} />

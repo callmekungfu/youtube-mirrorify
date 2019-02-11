@@ -5,8 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "start": "webpack-dev-server",
-    "backend": "nodemon server.js"
+    "devserver": "webpack-dev-server",
+    "start": "node server.js",
+    "heroku-postbuild": "webpack -p"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "@types/react": "^16.7.21",
     "@types/react-addons-css-transition-group": "^15.0.5",
     "@types/react-dom": "^16.0.11",
+    "@types/react-router-dom": "^4.3.1",
     "@types/react-youtube": "^7.6.0",
     "classnames": "^2.2.6",
     "express": "^4.16.4",
@@ -36,7 +38,8 @@
     "react-dom": "^16.7.0",
     "react-router-dom": "^4.3.1",
     "react-youtube": "^7.9.0",
-    "tslint": "^5.12.1"
+    "tslint": "^5.12.1",
+    "webpack": "^4.29.3"
   },
   "devDependencies": {
     "awesome-typescript-loader": "^5.2.1",

@@ -1,36 +1,15 @@
 const express = require('express');
-const grapqlHTTP = require('express-graphql');
-const {
-  buildSchema,
-} = require('graphql');
+const path = require('path');
 
-const test = require('./testing');
-
+const port = process.env.PORT || 8080;
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+app.use(express.static(__dirname));
 
-app.listen(PORT, () => {
-  console.log(`Server is Running on ${PORT}`);
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'index.html'));
 });
 
-const schema = buildSchema(`
-  type Query {
-    hello: String
-  }
-`);
-
-const root = {
-  hello: () => 'Hello World',
-};
-
-app.use('/graphql', grapqlHTTP({
-  schema,
-  rootValue: root,
-  graphiql: true,
-}));
-
-app.get('/', (req, res) => {
-  res.status(200).json(test());
-  res.end();
+app.listen(port, () => {
+  console.log(`YouTube Mirrorify Running on PORT: ${port}`);
 });
