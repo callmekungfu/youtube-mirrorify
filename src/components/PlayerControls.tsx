@@ -11,6 +11,8 @@ export type ControlProps = {
   handleSpeedChange: (speed: number) => void;
   handleMirrorChange: (mirror: boolean) => void;
   handleTargetChange: (target: string) => void;
+
+  mirrored?: boolean;
 };
 
 type ControlState = {
@@ -102,7 +104,7 @@ export class Controls extends React.Component<ControlProps, ControlState> {
             <div>
               <h4>Player Utilities</h4>
               <SpeedControl speedChange={this.handleSpeedChange}/>
-              <MirrorControl handleMirrorChange={this.handleMirrorChange}/>
+              <MirrorControl handleMirrorChange={this.handleMirrorChange} mirrored={this.props.mirrored}/>
             </div>
             <div>
               <h4>Play Video</h4>

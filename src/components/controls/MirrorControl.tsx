@@ -4,6 +4,7 @@ import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
 
 export type SpeedControlProps = {
   handleMirrorChange: (speed: boolean) => void;
+  mirrored?: boolean;
 };
 
 type SpeedControlState = {
@@ -18,6 +19,14 @@ export class MirrorControl extends React.Component<SpeedControlProps, SpeedContr
   constructor (props: SpeedControlProps) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentDidUpdate() {
+    if (this.props.mirrored != this.state.mirrored) {
+      this.setState({
+        mirrored: this.props.mirrored
+      })
+    }
   }
 
   handleClick(e: any) {

@@ -45,7 +45,8 @@ export class Root extends React.Component<props, state> {
   componentDidMount() {
     const fromWatch = this.props.match.path.indexOf('watch') !== -1;
     this.setState({
-      fromWatch
+      fromWatch,
+      mirror: fromWatch
     });
   }
 
@@ -86,7 +87,7 @@ export class Root extends React.Component<props, state> {
     return (
       <div>
         <YouTubePlayer fromWatch={this.state.fromWatch} video={this.state.target} speed={this.state.speed} mirror={this.state.mirror} onReady={this.handlePlayerReady} />
-        <Controls handleSpeedChange={this.handleSpeedChange} handleMirrorChange={this.handleMirrorChange} handleTargetChange={this.handleTargetChange} />
+        <Controls handleSpeedChange={this.handleSpeedChange} handleMirrorChange={this.handleMirrorChange} handleTargetChange={this.handleTargetChange} mirrored={this.state.mirror}/>
       </div>
     )
   }
