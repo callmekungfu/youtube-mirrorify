@@ -6,12 +6,14 @@ import { MirrorControl } from './controls/MirrorControl';
 import { TargetControl } from './controls/TargetControl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faExpand, faCompress, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { LoopControl } from './controls/LoopControl';
 
 export type ControlProps = {
   handleSpeedChange: (speed: number) => void;
   handleMirrorChange: (mirror: boolean) => void;
   handleTargetChange: (target: string) => void;
-
+  handleStartTimeChange: (time: number) => void;
+  handleEndTimeChange: (time: number) => void;
   mirrored?: boolean;
 };
 
@@ -105,6 +107,10 @@ export class Controls extends React.Component<ControlProps, ControlState> {
               <h4>Player Utilities</h4>
               <SpeedControl speedChange={this.handleSpeedChange}/>
               <MirrorControl handleMirrorChange={this.handleMirrorChange} mirrored={this.props.mirrored}/>
+            </div>
+            <div>
+              <h4>Loop Video</h4>
+              <LoopControl handleStartTimeChange={this.props.handleStartTimeChange} handleEndTimeChange={this.props.handleEndTimeChange} />
             </div>
             <div>
               <h4>Play Video</h4>

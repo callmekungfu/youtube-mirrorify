@@ -45,7 +45,7 @@ export class TargetControl extends React.Component<TargetControlProps, TargetCon
     return (
       <div className={this.state.bad_input ? 'error' : null}>
         <p className="error-prompt" hidden={!this.state.bad_input}>This is not a valid YouTube link.</p>
-        <input type="text" placeholder="Paste YouTube Link Here" onChange={this.handleChange} />
+        <input type="text" className="link-input" placeholder="Paste YouTube Link Here" onChange={this.handleChange} />
         <button className="btn search-btn" onClick={this.handleClick}><FontAwesomeIcon icon={faArrowRight} /></button>
       </div>
     )

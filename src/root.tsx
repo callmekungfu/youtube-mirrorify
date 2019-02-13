@@ -23,6 +23,9 @@ type state = {
   target: string;
   fromWatch: boolean;
   playerReady: boolean;
+  loop: boolean;
+  startTime: number;
+  endTime: number;
 }
 
 export class Root extends React.Component<props, state> {
@@ -32,6 +35,9 @@ export class Root extends React.Component<props, state> {
     target: '',
     fromWatch: false,
     playerReady: false,
+    loop: false,
+    startTime: 0,
+    endTime: -1
   }
 
   constructor(props: any) {
@@ -40,6 +46,8 @@ export class Root extends React.Component<props, state> {
     this.handleMirrorChange = this.handleMirrorChange.bind(this);
     this.handleTargetChange = this.handleTargetChange.bind(this);
     this.handlePlayerReady = this.handlePlayerReady.bind(this);
+    this.handleStartTimeChange = this.handleStartTimeChange.bind(this);
+    this.handleEndTimeChange = this.handleEndTimeChange.bind(this);
   }
 
   componentDidMount() {
@@ -83,11 +91,23 @@ export class Root extends React.Component<props, state> {
     })
   }
 
+  handleStartTimeChange(startTime: number) {
+    this.setState({
+      startTime
+    })
+  }
+
+  handleEndTimeChange(endTime: number) {
+    this.setState({
+      endTime
+    })
+  }
+
   render() {
     return (
       <div>
         <YouTubePlayer fromWatch={this.state.fromWatch} video={this.state.target} speed={this.state.speed} mirror={this.state.mirror} onReady={this.handlePlayerReady} />
-        <Controls handleSpeedChange={this.handleSpeedChange} handleMirrorChange={this.handleMirrorChange} handleTargetChange={this.handleTargetChange} mirrored={this.state.mirror}/>
+        <Controls handleSpeedChange={this.handleSpeedChange} handleMirrorChange={this.handleMirrorChange} handleTargetChange={this.handleTargetChange} mirrored={this.state.mirror} handleStartTimeChange={this.handleStartTimeChange} handleEndTimeChange={this.handleEndTimeChange} />
       </div>
     )
   }

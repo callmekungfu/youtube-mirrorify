@@ -50,6 +50,9 @@ export class YouTubePlayer extends React.Component<PlayerProps, PlayerState> {
     if (nextProps.video !== this.state.vidId) {
       this.setState({vidId: nextProps.video});
       youtube.playVideo();
+      // setInterval(() => {
+      //   console.log(youtube.getCurrentTime())
+      // }, 1000)
     }
   }
 

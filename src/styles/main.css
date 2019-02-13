@@ -54,6 +54,12 @@ a:hover {
   background: #673ab7;
 }
 
+.loop-control-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
 .hide-controls {
   position: absolute;
   top: 25px;
@@ -67,6 +73,10 @@ a:hover {
   margin-bottom: 15px;
   font-size: 25px;
   text-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+}
+
+.loop-check {
+  padding: 15px;
 }
 
 .controls-container select {
@@ -141,13 +151,21 @@ a:hover {
 
 .controls-container input {
   padding: 15px;
-  width: 25em;
   border: unset;
   transition: all 0.25s;
   font-family: 'Rubik', sans-serif;
   background: none;
   border-bottom: solid #03a9f4 2px;
   color: #fff
+}
+
+.controls-container .link-input {
+  width: 25em;
+}
+
+.controls-container .time-input {
+  width: 5em;
+  margin-right: 10px;
 }
 
 .controls-container input::placeholder {
