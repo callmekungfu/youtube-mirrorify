@@ -31,6 +31,7 @@
     "@types/react-youtube": "^7.6.0",
     "body-parser": "^1.18.3",
     "classnames": "^2.2.6",
+    "cors": "^2.8.5",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "express-graphql": "^0.7.1",

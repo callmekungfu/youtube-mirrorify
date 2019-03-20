@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyparser = require('body-parser');
+const cors = require('cors');
 
 const port = process.env.PORT || 8080;
 const app = express();
@@ -27,6 +28,7 @@ db.on('error', console.error.bind(console, 'MONGO ERR: '));
 
 app.use(express.static(__dirname));
 app.use(bodyparser.json());
+app.use(cors());
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'index.html'));
