@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-const bodyparser = require('body-parser');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const port = process.env.PORT || 8080;
@@ -27,7 +27,7 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MONGO ERR: '));
 
 app.use(express.static(__dirname));
-app.use(bodyparser.json());
+app.use(bodyParser.urlencoded());
 app.use(cors());
 
 app.get('*', (req, res) => {
