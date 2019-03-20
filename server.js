@@ -36,6 +36,7 @@ app.get('*', (req, res) => {
 
 app.post('/email', (req, res) => {
   const { body } = req;
+  console.log(body);
   const contactInstance = new ContactModel(body);
   contactInstance.save((err) => {
     if (err) {
