@@ -37,7 +37,7 @@ export class YouTubePlayer extends React.Component<PlayerProps, PlayerState> {
     this.initPlayer = this.initPlayer.bind(this);
   }
 
-  componentWillReceiveProps(nextProps: PlayerProps) {
+  componentWillReceiveProps(nextProps: PlayerProps): void {
     if (nextProps.speed !== this.state.speed) {
       this.setState({ speed: nextProps.speed });
       this.setPlayBackRate(nextProps.speed);
@@ -50,22 +50,19 @@ export class YouTubePlayer extends React.Component<PlayerProps, PlayerState> {
     if (nextProps.video !== this.state.vidId) {
       this.setState({vidId: nextProps.video});
       youtube.playVideo();
-      // setInterval(() => {
-      //   console.log(youtube.getCurrentTime())
-      // }, 1000)
     }
   }
 
-  initPlayer(e: any) {
+  initPlayer(e: Event): void {
     youtube = e.target;
     this.props.onReady();
   }
 
-  setPlayBackRate(rate: number) {
+  setPlayBackRate(rate: number): void {
     youtube.setPlaybackRate(rate);
   }
 
-  setMirror(mirror: boolean) {
+  setMirror(mirror: boolean): void {
     if(mirror) {
       this.setState({
         mirrorText: 'mirrored'
@@ -85,7 +82,7 @@ export class YouTubePlayer extends React.Component<PlayerProps, PlayerState> {
             <div>
               <h1>YouTube Mirrorify</h1>
               <h2>Play Video by pasting the link in the box below</h2>
-              <div className="mb-30">Built with <div className="beating-heart">❤</div> by <a href="https://yonglinwang.ca">Yong Lin Wang</a>, for Ivy Ma.</div>
+              <div className="mb-30">Built with <div className="beating-heart">❤</div> by <a href="https://yonglinwang.ca">Yong Lin Wang</a>, for those who dance.</div>
               <button className="btn btn-primary"><FontAwesomeIcon icon={faGithub} /> GitHub Repo</button>
             </div> : 
             <div>
@@ -94,7 +91,7 @@ export class YouTubePlayer extends React.Component<PlayerProps, PlayerState> {
           }
         </div>
         <div className={(this.state.mirror ? 'player-container mirrored' : 'player-container')} hidden={this.state.vidId === ''}>
-          <YouTube className="video-player" videoId={this.state.vidId} onReady={this.initPlayer} opts={{playerVars: {fs: 0, modestBranding: 1, autoplay: 1}}} />
+          <YouTube className="video-player" videoId={this.state.vidId} onReady={this.initPlayer} opts={{playerVars: {fs: 0, autoplay: 1}}} />
         </div>
       </div>
     );
