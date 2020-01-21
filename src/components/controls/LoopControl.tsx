@@ -20,17 +20,11 @@ export class LoopControl extends React.Component<loopControlProps, loopControlSt
         bad_input: false
     }
 
-    constructor(props: loopControlProps) {
-        super(props);
-    }
-
     handleStartTimeChange(e: any) {
-        // this.props.handleStartTimeChange(e.target.value);
         console.log(e.target.value);
     } 
 
     handleEndTimeChange(e: any) {
-        // this.props.handleEndTimeChange(e.target.value);
         console.log(e.target.value);
     }
 

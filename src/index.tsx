@@ -4,7 +4,6 @@ import * as ReactDOM from "react-dom";
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Switch
 } from 'react-router-dom'
 
@@ -19,5 +18,5 @@ ReactDOM.render(
       <Route exact path="/watch" component={Root} />
     </Switch>
   </Router>,
-  document.getElementById('example')
+  document.getElementById('root')
 );

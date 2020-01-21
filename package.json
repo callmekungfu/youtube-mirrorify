@@ -1,62 +1,57 @@
 {
-  "name": "typescript-learning",
-  "version": "1.0.0",
-  "description": "This is where I try to learn typescript",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "devserver": "webpack-dev-server -d",
-    "start": "nodemon server.js",
-    "heroku-postbuild": "webpack -p"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/callmekungfu/typescript-learning.git"
-  },
-  "author": "Yong Lin Wang",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/callmekungfu/typescript-learning/issues"
-  },
-  "homepage": "https://github.com/callmekungfu/typescript-learning#readme",
+  "name": "youtube-mirrorify",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://callmekungfu.github.io/youtube-mirrorify",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26",
     "@fortawesome/free-brands-svg-icons": "^5.12.0",
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "@fortawesome/react-fontawesome": "^0.1.8",
-    "@types/react": "^16.9.18",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
     "@types/react-addons-css-transition-group": "^15.0.5",
-    "@types/react-dom": "^16.9.5",
-    "@types/react-router-dom": "^4.3.5",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^5.1.3",
     "@types/react-youtube": "^7.6.2",
-    "body-parser": "^1.19.0",
-    "classnames": "^2.2.6",
-    "cors": "^2.8.5",
-    "dotenv": "^7.0.0",
-    "express": "^4.17.1",
-    "express-graphql": "^0.7.1",
-    "graphql": "^14.5.8",
-    "mongoose": "^5.8.9",
-    "nodemon": "^1.19.4",
+    "install": "^0.13.0",
+    "npm": "^6.13.6",
     "react": "^16.12.0",
     "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.12.0",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.3.0",
     "react-youtube": "^7.9.0",
-    "tslint": "^5.20.1",
-    "webpack": "^4.41.5"
+    "typescript": "~3.7.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
-    "awesome-typescript-loader": "^5.2.1",
-    "css-loader": "^2.1.1",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.1.1",
-    "eslint-plugin-import": "^2.20.0",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.18.0",
-    "source-map-loader": "^0.2.4",
-    "typescript": "^3.7.5",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.1"
+    "gh-pages": "^2.2.0"
   }
 }

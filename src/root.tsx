@@ -40,7 +40,7 @@ export class Root extends React.Component<props, state> {
     endTime: -1
   }
 
-  constructor(props: any) {
+  constructor(props: props) {
     super(props);
     this.handleSpeedChange = this.handleSpeedChange.bind(this);
     this.handleMirrorChange = this.handleMirrorChange.bind(this);
@@ -59,7 +59,7 @@ export class Root extends React.Component<props, state> {
   }
 
   componentDidUpdate() {
-    if (this.state.playerReady && this.props.location.search && this.state.target === '') {
+    if (this.state.playerReady && this.props.location && this.props.location.search && this.state.target === '') {
       const target = this.props.location.search.substr(this.props.location.search.indexOf('?v=') + 3, + 11);
       this.setState({
         target
@@ -114,10 +114,11 @@ export class Root extends React.Component<props, state> {
 
   // Author: Lasnv https://stackoverflow.com/users/1064371/lasnv, Modified for typescript
   youtubeParser(url: string) {
+    // eslint-disable-next-line no-useless-escape
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = url.match(regExp);
 
-    if (match && match[7].length == 11) {
+    if (match && match[7].length === 11) {
       return match[7];
     } else {
       throw new Error('Not a YouTube Link or ID.')

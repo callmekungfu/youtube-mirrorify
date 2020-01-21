@@ -22,9 +22,9 @@ export class MirrorControl extends React.Component<SpeedControlProps, SpeedContr
   }
 
   componentDidUpdate() {
-    if (this.props.mirrored != this.state.mirrored) {
+    if (this.props.mirrored !== this.state.mirrored) {
       this.setState({
-        mirrored: this.props.mirrored
+        mirrored: !!this.props.mirrored
       })
     }
   }
