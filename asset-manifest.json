@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/youtube-mirrorify/static/css/main.ea1be238.chunk.css",
+    "main.js": "/youtube-mirrorify/static/js/main.60d3f6e9.chunk.js",
+    "main.js.map": "/youtube-mirrorify/static/js/main.60d3f6e9.chunk.js.map",
+    "runtime-main.js": "/youtube-mirrorify/static/js/runtime-main.0855d3d0.js",
+    "runtime-main.js.map": "/youtube-mirrorify/static/js/runtime-main.0855d3d0.js.map",
+    "static/js/2.fb803bf0.chunk.js": "/youtube-mirrorify/static/js/2.fb803bf0.chunk.js",
+    "static/js/2.fb803bf0.chunk.js.map": "/youtube-mirrorify/static/js/2.fb803bf0.chunk.js.map",
+    "index.html": "/youtube-mirrorify/index.html",
+    "precache-manifest.c009400da7cbe4782a78d2e2b8b58cd6.js": "/youtube-mirrorify/precache-manifest.c009400da7cbe4782a78d2e2b8b58cd6.js",
+    "service-worker.js": "/youtube-mirrorify/service-worker.js",
+    "static/css/main.ea1be238.chunk.css.map": "/youtube-mirrorify/static/css/main.ea1be238.chunk.css.map",
+    "static/js/2.fb803bf0.chunk.js.LICENSE": "/youtube-mirrorify/static/js/2.fb803bf0.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0855d3d0.js",
+    "static/js/2.fb803bf0.chunk.js",
+    "static/css/main.ea1be238.chunk.css",
+    "static/js/main.60d3f6e9.chunk.js"
+  ]
+}
